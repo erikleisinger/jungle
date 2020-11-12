@@ -1,5 +1,10 @@
 <h1>Categories</h1>
 
+  <% if params[:notice] %>
+    Wowowowowow
+  <% end %>
+  <%= params[:notice] %>
+
 <ul class="nav nav-tabs">
 
   <% @categories.each do |category| %>
@@ -11,6 +16,9 @@
     <a data-toggle="tab" href="#<%=category.name%>"><%= category.name %></a>
     </li>
   <% end %>
+  <li>
+  <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn-outline btn-info' %>
+  </li>
 </ul>
 <div class="tab-content">
 <% @categories.each do |category| %>
@@ -20,12 +28,14 @@
   <div id="<%=category.name%>" class="tab-pane fade">
   <% end %>
     <h3><%=category.name%> </h3>
+  <section class="categories-show">
     <div class="products">
     <% category.products.each do |product| %>
       <%= render partial: "admin/categories/product", locals: {product: product}%>
       <% end %>
 
     </div>
+    </section>
   </div>
   <% end %>
   </div>
