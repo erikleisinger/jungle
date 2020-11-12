@@ -1,0 +1,12 @@
+// Vendor
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.panel-heading h1 {
+  text-align: center;
+}
+
+.panel-footer {
+  font-size: 0.7em
+}
