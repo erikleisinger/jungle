@@ -9,8 +9,12 @@
     <%= product.description %>
   </p>
   <footer class="actions">
-    <%= button_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary' , method: :post do %>
+  <%  if product.quantity.zero? %>
+  <button class="btn btn-primary disabled"><%= fa_icon "times-circle", text: 'Out of Stock' %></button>
+  <% else %>
+  <%= button_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary' , method: :post do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
+    <% end %>
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
       Details &raquo;
@@ -18,12 +22,17 @@
   </footer>
 
   <aside class="price">
+  <% if active_sale? %>
+    <%= humanized_money_with_symbol product.price - product.price * sale_percent %>
+  <% else %>
     <%= humanized_money_with_symbol product.price %>
+  <% end %>
   </aside>
 
-  <%  if product.quantity.zero? %>
-  <aside class="sold_out">
-      SOLD OUT!
+
+  <% if active_sale? %>
+  <aside class="sale">
+  SALE
   </aside>
   <% end %>
 

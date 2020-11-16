@@ -12,7 +12,16 @@
  
 
   <main class="container">
+
+    <% if active_sale? %>
+      <div class="alert alert-success">
+        <%= sale_name%> is now on!
+        Everything is <%= sale_percent * 100%>% off!
+      </div>
+    <% end %>
+
     <%= yield %>
+
   </main>
 
   <%= yield :end_of_body %>

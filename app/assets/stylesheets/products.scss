@@ -63,6 +63,19 @@ main section.categories-show {
         color: white;
       }
 
+
+      aside.sale {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        background-color: #5cb85c;
+        border-top-left-radius: 4px;
+        border-bottom-right-radius: 20px;
+        font-size: 0.8em;
+        color: white;
+      }
+
       &:hover {
 
         border-color: #999;
