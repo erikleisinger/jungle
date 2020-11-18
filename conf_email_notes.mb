@@ -1,0 +1,2 @@
+- Column in the isers table for state: active/inactive/pending/suspended, etc. 
+- Users column which holds the unique confirmation token emailed to the user

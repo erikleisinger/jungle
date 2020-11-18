@@ -36,6 +36,10 @@ class OrdersController < ApplicationController
       currency:    'cad'
     )
   end
+  
+  def send_confirmation_email(order)
+    UserMailer.order_confirmation(order).deliver_now
+  end
 
   def create_order(stripe_charge)
     order = Order.new(
@@ -55,6 +59,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    send_confirmation_email(order)
     order
   end
 
